@@ -11,14 +11,9 @@ export const add = async (line) => {
 
   const fileName = commandList[1]
 
-    // try {
-    //   await fs.writeFile(join(cwd(), fileName), { flag: 'wx' })
-    // } catch {
-    //   console.log('Operation failed')
-    // }
   let filehandle
   const pathToNewFile = join(cwd(), fileName)
-  
+
   try {
     filehandle = await open(pathToNewFile, 'wx')
   } catch {
