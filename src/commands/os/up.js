@@ -1,6 +1,6 @@
 import {dirname} from 'path'
-import {getCwd} from '../../getCwd.js'
+import {cwd, chdir} from 'process'
 export const up = () => {
-    const upperPath = dirname(getCwd())
-    process.chdir(upperPath)
+    const upperPath = dirname(cwd())
+    chdir(upperPath)
 }
