@@ -2,6 +2,7 @@ import { up } from './commands/os/up.js'
 import { cd } from './commands/os/cd.js'
 import { ls } from './commands/os/ls.js'
 import {cat} from './commands/file/cat.js'
+import { add } from './commands/file/add.js'
 
 export const commandSwitcher = async (rl, line) => {
   const command = line.split(' ')[0]
@@ -20,7 +21,7 @@ export const commandSwitcher = async (rl, line) => {
      await cat(line, rl)
       break
     case 'add':
-      console.log('Coomand: ', line.trim())
+      await add(line)
       break
     case 'rn':
       console.log('Coomand: ', line.trim())
