@@ -40,7 +40,7 @@ const calculateRelativePath = (path) => {
       }, [])
       fullPath = join(fullPath, ...partsOfPath)
     } else {
-        fullPath = join(cwd(), path)
+      fullPath = join(cwd(), path)
     }
   } catch {
     console.log('Operation failed')
@@ -60,7 +60,7 @@ export const checkPathForExistence = async (path, shouldExist = true) => {
     await access(fullPath)
     const stats = await stat(fullPath)
     if (!stats.isDirectory()) {
-        return {verdict: false, error: true, fullPath}
+      return { verdict: false, error: true, fullPath }
     }
     return shouldExist
       ? { verdict: true, error: false, fullPath }
@@ -72,6 +72,19 @@ export const checkPathForExistence = async (path, shouldExist = true) => {
   }
 }
 
-export const checkFileForExistence = async (path) => {
-
+export const checkFileForExistence = async (path, shouldExist = true) => {
+  try {
+    await access(path)
+    const stats = await stat(path)
+    if (!stats.isFile()) {
+      return { verdict: false, error: true }
+    }
+    return shouldExist
+      ? { verdict: true, error: false }
+      : { verdict: false, error: false }
+  } catch {
+    return shouldExist
+      ? { verdict: false, error: true }
+      : { verdict: true, error: false }
+  }
 }
