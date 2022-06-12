@@ -2,7 +2,6 @@ import { rename } from 'node:fs/promises'
 import { checkFileForExistence } from '../../utils/utils.js'
 import { dirname, join } from 'node:path'
 import { readdir } from 'fs/promises'
-import { cwd } from 'process'
 
 export const rn = async (line) => {
   const commandList = line.split(' ')
@@ -23,8 +22,10 @@ export const rn = async (line) => {
     return
   }
 
+  const fullPathToOldDirectory = dirname(fullPathToOldFile)
+
   try {
-    const fileList = await readdir(cwd())
+    const fileList = await readdir(fullPathToOldDirectory)
     if (fileList.includes(newFileName)) {
       throw new Error()
     }

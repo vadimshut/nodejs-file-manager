@@ -1,6 +1,4 @@
-import { rename } from 'node:fs/promises'
 import { checkFileForExistence } from '../../utils/utils.js'
-import { dirname, join } from 'node:path'
 import { rm } from 'fs/promises'
 
 export const remove = async (line) => {
