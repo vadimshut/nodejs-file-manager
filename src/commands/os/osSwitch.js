@@ -1,5 +1,5 @@
 import { eol } from './eol.js'
-import {getCpus} from './cpus'
+import {getCpus} from './get-cpus.js'
 
 
 export const osSwitch = async (line) => {
