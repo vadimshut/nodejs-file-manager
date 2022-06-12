@@ -6,6 +6,8 @@ import { add } from './commands/file/add.js'
 import { rn } from './commands/file/rn.js'
 import { remove } from './commands/file/rm.js'
 import { copy } from './commands/file/copy.js'
+import {move} from './commands/file/mv.js'
+
 
 export const commandSwitcher = async (rl, line) => {
   const command = line.split(' ')[0]
@@ -33,7 +35,7 @@ export const commandSwitcher = async (rl, line) => {
       await copy(line)
       break
     case 'mv':
-      console.log('Coomand: ', line.trim())
+      await move(line, copy, remove)
       break
     case 'rm':
       await remove(line)
