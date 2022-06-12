@@ -11,14 +11,14 @@ export const cat = async (line, rl) => {
   }
 
   const pathToFile = commandList[1]
-  const { verdict } = await checkFileForExistence(pathToFile, true)
+  const { verdict, fullPath } = await checkFileForExistence(pathToFile, true)
 
   if (!verdict) {
     console.log('Operation failed')
     return
   }
 
-  const rs = createReadStream(pathToFile, 'utf8')
+  const rs = createReadStream(fullPath, 'utf8')
   let readIsCorrect = false
 
   rs.on('readable', () => {

@@ -73,18 +73,19 @@ export const checkPathForExistence = async (path, shouldExist = true) => {
 }
 
 export const checkFileForExistence = async (path, shouldExist = true) => {
+    const fullPath = calculatePath(path)
   try {
     await access(path)
     const stats = await stat(path)
     if (!stats.isFile()) {
-      return { verdict: false, error: true }
+      return { verdict: false, error: true, fullPath }
     }
     return shouldExist
-      ? { verdict: true, error: false }
-      : { verdict: false, error: false }
+      ? { verdict: true, error: false, fullPath }
+      : { verdict: false, error: false, fullPath }
   } catch {
     return shouldExist
-      ? { verdict: false, error: true }
-      : { verdict: true, error: false }
+      ? { verdict: false, error: true. fullPath }
+      : { verdict: true, error: false, fullPath }
   }
 }
