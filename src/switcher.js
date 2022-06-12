@@ -4,6 +4,7 @@ import { ls } from './commands/os/ls.js'
 import { cat } from './commands/file/cat.js'
 import { add } from './commands/file/add.js'
 import { rn } from './commands/file/rn.js'
+import { remove } from './commands/file/rm.js'
 
 export const commandSwitcher = async (rl, line) => {
   const command = line.split(' ')[0]
@@ -32,6 +33,11 @@ export const commandSwitcher = async (rl, line) => {
       break
     case 'mv':
       console.log('Coomand: ', line.trim())
+      break
+    case 'rm':
+      await remove(line)
+      break
+
     case '.exit':
       rl.close()
       process.exit()
