@@ -10,6 +10,7 @@ import { move } from './commands/file/mv.js'
 import { osSwitch } from './commands/os/osSwitch.js'
 import { calculateHash } from './commands/hash/calculate-hash.js'
 import { compressFile } from './commands/zip/compress.js'
+import { decompressFile } from './commands/zip/decompress.js'
 
 export const commandSwitcher = async (rl, line) => {
   const command = line.split(' ')[0]
@@ -50,6 +51,9 @@ export const commandSwitcher = async (rl, line) => {
       break
     case 'compress':
       await compressFile(line)
+      break
+    case 'decompress':
+      await decompressFile(line)
       break
 
     case '.exit':

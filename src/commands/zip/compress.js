@@ -30,8 +30,8 @@ export const compressFile = async (line) => {
     return
   }
 
-  const { name } = parse(fullPathToFile)
-  const fullPathToNewFile = join(fullDestinationPath, name + EXT)
+  const { ext, name } = parse(fullPathToFile)
+  const fullPathToNewFile = join(fullDestinationPath, name + ext + EXT)
 
   const {
     verdict: verdictFullPathToNewFile,
