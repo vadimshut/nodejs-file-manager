@@ -7,8 +7,9 @@ import { rn } from './commands/file/rn.js'
 import { remove } from './commands/file/rm.js'
 import { copy } from './commands/file/copy.js'
 import { move } from './commands/file/mv.js'
-import {osSwitch} from './commands/os/osSwitch.js'
-import {calculateHash} from './commands/hash/calculate-hash.js'
+import { osSwitch } from './commands/os/osSwitch.js'
+import { calculateHash } from './commands/hash/calculate-hash.js'
+import { compressFile } from './commands/zip/compress.js'
 
 export const commandSwitcher = async (rl, line) => {
   const command = line.split(' ')[0]
@@ -44,8 +45,11 @@ export const commandSwitcher = async (rl, line) => {
     case 'os':
       await osSwitch(line)
       break
-      case 'hash':
+    case 'hash':
       await calculateHash(line)
+      break
+    case 'compress':
+      await compressFile(line)
       break
 
     case '.exit':
