@@ -1,6 +1,6 @@
 import { eol } from './eol.js'
 import {getCpus} from './get-cpus.js'
-import { homedir, userInfo } from 'os'
+import { homedir, userInfo, arch } from 'os'
 
 
 export const osSwitch = async (line) => {
@@ -26,7 +26,7 @@ export const osSwitch = async (line) => {
       console.log(`Current system user name: ${userInfo().username}`)
       break
     case '--architecture':
-      console.log(command)
+      console.log(`CPU architecture: ${arch()}`)
       break
     default:
       console.log('Operation failed')
