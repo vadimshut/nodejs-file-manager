@@ -8,6 +8,7 @@ import { remove } from './commands/file/rm.js'
 import { copy } from './commands/file/copy.js'
 import { move } from './commands/file/mv.js'
 import {osSwitch} from './commands/os/osSwitch.js'
+import {calculateHash} from './commands/hash/calculate-hash.js'
 
 export const commandSwitcher = async (rl, line) => {
   const command = line.split(' ')[0]
@@ -42,6 +43,9 @@ export const commandSwitcher = async (rl, line) => {
       break
     case 'os':
       await osSwitch(line)
+      break
+      case 'hash':
+      await calculateHash(line)
       break
 
     case '.exit':
