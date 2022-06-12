@@ -1,6 +1,6 @@
 import { eol } from './eol.js'
 import {getCpus} from './get-cpus.js'
-import { homedir } from 'os'
+import { homedir, userInfo } from 'os'
 
 
 export const osSwitch = async (line) => {
@@ -23,7 +23,7 @@ export const osSwitch = async (line) => {
       console.log(`Home directory: ${homedir()}`)
       break
     case '--username':
-      console.log(command)
+      console.log(`Current system user name: ${userInfo().username}`)
       break
     case '--architecture':
       console.log(command)
