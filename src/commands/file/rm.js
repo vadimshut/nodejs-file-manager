@@ -21,5 +21,6 @@ export const remove = async (line) => {
     await rm(fullPath)
   } catch (error) {
     console.log('Operation failed')
+    return
   }
 }
